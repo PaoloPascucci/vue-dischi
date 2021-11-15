@@ -1,35 +1,50 @@
 <template>
-  <div class="main">
-<div>
+  <div class="main text-center" >
+      <div class="row_ p_3">
     <disc v-for="disc in discs"
     :key="disc.id"
-    :image="disc.img"
+    :poster="disc.poster"
     :title="disc.title"
-    :artist="disc.artist"
-    :date="disc.date"
+    :author="disc.author"
+    :year="disc.year"
     />
-</div>
+      </div>
   </div>
 </template>
 
 <script>
 import disc from "./disc.vue";
+import axios from "axios";
 export default {
 components:{
     disc,
 },
 data(){
     return{
-        // axios
-        // .get('https://flynn.boolean.careers/exercises/api/array/music').then()
+        discs:[]
     }
-}
+},
+mounted(){
+    axios
+    .get("https://flynn.boolean.careers/exercises/api/array/music")
+    .then((response)=>{
+        this.discs = response.data.response;
+    })}
 }
 </script>
 
 <style>
 .main{
      background-color: #1e2d3b;
-     height: 887px;
+     height: 871px;
+}
+.row_ {
+display: flex;
+flex-direction: row;
+justify-content: center;
+flex-wrap: wrap;
+ } 
+.p_3{
+    padding: 1rem 10rem;
 }
 </style>
