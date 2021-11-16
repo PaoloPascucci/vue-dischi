@@ -2,6 +2,7 @@
   <div class="main text-center">
     <div class="row_ p_3">
       <GenSelect :selector ="selectItem" @changeGen="pickGen" />
+      <Authors :SelectAuth="searchauthor" @selAut="pickAuth" />
       <disc
         v-for="disc in genFilter"
         :key="disc.id"
@@ -18,15 +19,18 @@
 import disc from "./disc.vue";
 import GenSelect from "./GenSelect.vue";
 import axios from "axios";
+import Authors from './Authors.vue';
 export default {
   components: {
     disc,
     GenSelect,
+    Authors
   },
-  data() {
+    data(){
     return {
       discs: [],
       selectItem: "",
+      selectAuthor:""
     };
   },
   mounted() {
@@ -45,6 +49,9 @@ export default {
     pickGen(value) {
       this.selectItem = value;
     },
+        pickAuth(valor) {
+      this.selectAuthor = valor;
+    },
   },
   computed: {
     genFilter() {
@@ -52,13 +59,14 @@ export default {
         return this.discs;
       } else {
         const filterItems = this.discs.filter((disc) => {
-          return disc.genre.includes(this.selectItem);
-        });
-        return filterItems;
+         return disc.genre.includes(this.selectItem), disc.author.includes(this.selectAuthor)
+          });
+        return filterItems
       }
-    },
+      }
   },
-};
+}
+
 </script>
 
 <style>
