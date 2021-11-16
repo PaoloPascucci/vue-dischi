@@ -5,17 +5,27 @@
 </template>
 
 <script>
+
 export default {
 
 }
+
 </script>
 
 <style lang="scss">
 .header{
      background-color: #2e3a46;
+     display: flex;
+     justify-content: space-between;
 }
 img{
     height: 50px;
     margin: .5rem 3rem;
+}
+select{
+  margin: .5rem 3rem 0 0;
+  width: 100px;
+  height: 50px;
+  text-align: center;
 }
 </style>
