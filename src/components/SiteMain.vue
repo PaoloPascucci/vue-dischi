@@ -59,12 +59,12 @@ export default {
         return this.discs;
       } else {
         const filterItems = this.discs.filter((disc) => {
-         return disc.genre.includes(this.selectItem), disc.author.includes(this.selectAuthor)
+         return (disc.genre.includes(this.selectItem) && disc.author.includes(this.selectAuthor))
           });
         return filterItems
       }
       }
-  },
+  }
 }
 
 </script>
