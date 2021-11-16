@@ -14,7 +14,7 @@ data(){
     }
 },
 mounted(){
-    Axios
+    axios
     .get("https://flynn.boolean.careers/exercises/api/array/music")
     .theb(r =>{
         r.data.response.forEach((album) => {
